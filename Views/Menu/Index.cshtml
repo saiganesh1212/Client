@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Client.Models.MenuItem>
+@using Microsoft.AspNetCore.Http;
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Menu Items</h1>
+
+
+<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreeDelivery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfLaunch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @if (item.FreeDelivery == true)
+                    {
+                        <p>Yes</p>
+                    }
+                    else
+                    {
+                        <p>No</p>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfLaunch)
+                </td>
+                <td>
+                    @if (item.Active == true)
+                    {
+                        <p>Yes</p>
+                    }
+                    else
+                    {
+                        <p>No</p>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @if (HttpContextAccessor.HttpContext.Session.GetString("Role") == "Admin")
+                    {
+                        @using (Html.BeginForm("EditMenuItem", "Menu", new { @menuId = item.Id }, FormMethod.Get))
+                        {
+                            <button type="submit"><a>Edit</a></button>
+                        }
+                    }
+                    else
+                    {
+                        @using (Html.BeginForm("AddToCart", "Cart", new { @id = item.Id }, FormMethod.Post))
+                        {
+                            <button type="submit">
+                                <a>AddToCart</a>
+                            </button>
+                        }
+                    }
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
