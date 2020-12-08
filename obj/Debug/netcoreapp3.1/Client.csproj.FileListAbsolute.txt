@@ -136,3 +136,4 @@ C:\Users\Ganesh\Desktop\Client\obj\Debug\netcoreapp3.1\Client.csproj.CoreCompile
 C:\Users\Ganesh\Desktop\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Ganesh\Desktop\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ganesh\Desktop\Client\obj\Debug\netcoreapp3.1\Client.csprojAssemblyReference.cache
+C:\Users\Ganesh\Desktop\Client\bin\Debug\netcoreapp3.1\Client.yaml
